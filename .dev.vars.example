@@ -1,0 +1,2 @@
+# Solo para desarrollo local (wrangler dev). En produccion: npx wrangler secret put DEEPSEEK_API_KEY
+DEEPSEEK_API_KEY=

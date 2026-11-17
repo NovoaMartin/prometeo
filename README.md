@@ -6,17 +6,25 @@ Villa Ejemplo (30.000 hab.), Excel con 4.000 beneficiarios y la alerta de las 22
 ## Cómo correrlo
 
 ```bash
-# Terminal 1 (opcional: sin el back todo funciona igual)
-cd server && npm install && npm run dev          # http://localhost:3001
-# con IA real:  DEEPSEEK_API_KEY=... npm run dev
-
-# Terminal 2
-cd web && npm install && npm run dev             # http://localhost:62467
+npm run install:all   # solo la primera vez
+npm run dev           # front (http://localhost:62467) + Worker/API (http://localhost:3001) con D1 local
 ```
 
-El front funciona completo sin back: el contador de autodiagnósticos usa un valor de ejemplo y el asistente responde con guion.
-Con back y sin `DEEPSEEK_API_KEY`, el asistente también usa el guion. Con key, responde DeepSeek vía AI SDK (`deepseek-chat`, configurable con `DEEPSEEK_MODEL`).
-Para publicar: `npm run build` en `web/` (hosting estático) y definir `VITE_API_URL` si el back está en otro dominio.
+El front funciona completo aunque la API esté caída (contador de ejemplo y asistente guionado).
+Para activar la IA en local: copiar `.dev.vars.example` a `.dev.vars` y completar `DEEPSEEK_API_KEY`.
+Sin key, el asistente usa el guion; con key, responde DeepSeek vía AI SDK (`deepseek-chat`, configurable con `DEEPSEEK_MODEL`).
+
+## Deploy en Cloudflare Workers
+
+Un solo Worker sirve el front compilado (assets estáticos) y la API `/api/*` (misma URL, sin CORS). Los autodiagnósticos se guardan en D1.
+
+```bash
+npx wrangler login
+npx wrangler d1 create red-prometeo          # copiar el database_id a wrangler.jsonc
+npm run db:remote                            # aplica las migraciones en D1
+npx wrangler secret put DEEPSEEK_API_KEY     # opcional; sin key el asistente usa el guion
+npm run deploy                               # build del front + wrangler deploy
+```
 
 ## Guion de la demo (2–3 min)
 Activá **Presentador** (arriba a la derecha) y avanzá con "Siguiente":
