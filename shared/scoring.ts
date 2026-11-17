@@ -1,4 +1,4 @@
-import { AREAS, PREGUNTAS, VALOR, type Respuesta } from '../data/preguntas'
+import { AREAS, PREGUNTAS, VALOR, type Respuesta } from './preguntas'
 
 export type Respuestas = Record<string, Respuesta>
 
@@ -38,3 +38,9 @@ export function planRecomendado(poblacion: number, tipo: 'municipio' | 'ong'): P
 
 export const impactoLabel = (n: number) => ['', 'Bajo', 'Medio', 'Alto'][n]
 export const esfuerzoLabel = (n: number) => ['', 'Bajo', 'Medio', 'Alto'][n]
+
+export function respuestasValidas(r: unknown): r is Respuestas {
+  if (!r || typeof r !== 'object') return false
+  const o = r as Record<string, unknown>
+  return PREGUNTAS.every((p) => o[p.id] === 'si' || o[p.id] === 'parcial' || o[p.id] === 'no')
+}

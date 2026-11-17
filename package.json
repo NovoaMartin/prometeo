@@ -9,11 +9,16 @@
     "build": "npm run build --prefix web",
     "typecheck": "tsc -p worker && tsc -p web --noEmit",
     "db:remote": "wrangler d1 migrations apply DB --remote",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply DB --local",
+    "db:seed": "node scripts/seed.ts > .seed.sql && wrangler d1 execute DB --local --file .seed.sql",
+    "db:seed:remote": "node scripts/seed.ts > .seed.sql && wrangler d1 execute DB --remote --file .seed.sql",
+    "setup": "npm run db:migrate && npm run db:seed"
   },
   "dependencies": {
     "@ai-sdk/deepseek": "^3.0.88",
-    "ai": "^7.0.176"
+    "ai": "^7.0.176",
+    "hono": "^4.13.19"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261117.1",
