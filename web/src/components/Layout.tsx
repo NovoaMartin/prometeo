@@ -17,9 +17,6 @@ export function Layout() {
 
   return (
     <div className="min-h-screen">
-      <div className="no-print bg-amber-300 px-4 py-1 text-center text-xs font-semibold text-amber-950">
-        PROTOTIPO · datos ficticios · integraciones (Wazuh, MISP, DFIR-IRIS, Greenbone, Keycloak) simuladas
-      </div>
       <header className="no-print border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-4 py-3">
           <div className="flex items-center gap-2 font-bold text-ink"><Shield className="text-brand" /> Red Prometeo</div>

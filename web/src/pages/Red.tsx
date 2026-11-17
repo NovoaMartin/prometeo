@@ -10,7 +10,7 @@ export function Red() {
 
   return (
     <div>
-      <PageTitle title="Red de amenazas compartidas" sub="Cada municipio que se suma protege a los demás (efecto red)." pain="Ventaja especial del Canvas: lo que le pasa a un municipio protege a toda la red. Reemplaza a MISP en el prototipo." />
+      <PageTitle title="Red de amenazas compartidas" sub="Cada municipio que se suma protege a los demás (efecto red)." />
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <svg viewBox="0 0 100 90" className="w-full">

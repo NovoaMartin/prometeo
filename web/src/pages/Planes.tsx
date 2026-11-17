@@ -14,7 +14,7 @@ export function Planes() {
   const plan = planRecomendado(hab, 'municipio')
   return (
     <div>
-      <PageTitle title="Planes y precios" pain="“Mejorar la seguridad sin grandes inversiones”: costo compartido y escalonado por población." />
+      <PageTitle title="Planes y precios" />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {PLANES.map((p) => (
           <Card key={p.t}>

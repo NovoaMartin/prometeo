@@ -20,7 +20,7 @@ export function Panel() {
 
   return (
     <div>
-      <PageTitle title={`Panel · ${s.municipio.nombre}`} pain="“No puede monitorear amenazas las 24 hs”: el panel muestra el estado en tiempo real y las alertas abiertas." />
+      <PageTitle title={`Panel · ${s.municipio.nombre}`} />
       <Card className="mb-4 flex items-center gap-3 border-emerald-300 bg-emerald-50">
         <ShieldCheck className="text-emerald-600" size={28} />
         <div>

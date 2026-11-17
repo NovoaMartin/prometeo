@@ -1,5 +1,4 @@
-import { useState, type ReactNode } from 'react'
-import { Info } from 'lucide-react'
+import type { ReactNode } from 'react'
 
 export function Card({ children, className = '' }: { children: ReactNode; className?: string }) {
   return <div className={`rounded-xl border border-slate-200 bg-white p-5 shadow-sm ${className}`}>{children}</div>
@@ -16,20 +15,11 @@ export function Kpi({ label, value, sub, tone = 'slate' }: { label: string; valu
   )
 }
 
-export function PageTitle({ title, sub, pain }: { title: string; sub?: string; pain?: string }) {
-  const [open, setOpen] = useState(false)
+export function PageTitle({ title, sub }: { title: string; sub?: string }) {
   return (
     <div className="mb-5">
-      <div className="flex items-center gap-2">
-        <h1 className="text-2xl font-bold text-ink">{title}</h1>
-        {pain && (
-          <button onClick={() => setOpen(!open)} className="no-print inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2 py-1 text-xs text-indigo-700 hover:bg-indigo-100" title="Trazabilidad con el mapa de empatía">
-            <Info size={14} /> ¿Qué dolor resuelve?
-          </button>
-        )}
-      </div>
+      <h1 className="text-2xl font-bold text-ink">{title}</h1>
       {sub && <p className="mt-1 text-slate-600">{sub}</p>}
-      {open && pain && <div className="mt-2 rounded-lg bg-indigo-50 p-3 text-sm text-indigo-900">{pain}</div>}
     </div>
   )
 }

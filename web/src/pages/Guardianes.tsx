@@ -12,7 +12,7 @@ export function Guardianes() {
 
   return (
     <div>
-      <PageTitle title="Guardianes Digitales" sub="Estudiantes supervisados convierten el plan de mejora en tareas concretas." pain="“Los usuarios cometen errores” y “pocos recursos humanos”: capacitación y acompañamiento sin costo de estudiantes con supervisor." />
+      <PageTitle title="Guardianes Digitales" sub="Estudiantes supervisados convierten el plan de mejora en tareas concretas." />
       <div className="mb-4 flex flex-wrap gap-4 text-sm">
         <Badge tone="blue">{hechas}/{TAREAS.length} tareas</Badge>
         <span>Madurez: <strong>{puntajeActual(s)}/100</strong></span>

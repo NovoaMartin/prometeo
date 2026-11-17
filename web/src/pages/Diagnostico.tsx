@@ -12,7 +12,7 @@ export function Diagnostico() {
 
   return (
     <div>
-      <PageTitle title="Autodiagnóstico de ciberseguridad" sub="12 preguntas, 3 minutos. Gratis, sin compromiso." pain="“No tengo tiempo para revisar todo”: un cuestionario corto devuelve un plan priorizado." />
+      <PageTitle title="Autodiagnóstico de ciberseguridad" sub="12 preguntas, 3 minutos. Gratis, sin compromiso." />
       <Card className="mb-4">
         <div className="grid gap-3 sm:grid-cols-3">
           <label className="text-sm">Organización

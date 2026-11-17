@@ -26,7 +26,7 @@ export function Resultado() {
 
   return (
     <div>
-      <PageTitle title={`Resultado: ${s.municipio.nombre}`} pain="“Le cuesta justificar inversiones”: el puntaje de madurez da un número y un plan concreto para mostrar." />
+      <PageTitle title={`Resultado: ${s.municipio.nombre}`} />
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="text-center">
           <div className="text-xs font-medium uppercase text-slate-500">Madurez de ciberseguridad</div>

@@ -8,7 +8,7 @@ export function Soc() {
   const cola = COLA_SOC.filter((a) => a.id !== 'a-001' || (s.alerta.activa && !s.alerta.contenida))
   return (
     <div>
-      <PageTitle title="Consola del analista SOC" sub="Cola de alertas de varios municipios. Los datos personales llegan seudonimizados." pain="Privacidad desde el diseño: el SOC recibe solo registros de seguridad. Y los estudiantes ganan experiencia real y supervisada." />
+      <PageTitle title="Consola del analista SOC" sub="Cola de alertas de varios municipios. Los datos personales llegan seudonimizados." />
       <Card>
         <table className="w-full text-sm">
           <thead className="text-left text-xs uppercase text-slate-500">

@@ -15,7 +15,7 @@ export function Reporte() {
   return (
     <div>
       <div className="no-print flex items-start justify-between">
-        <PageTitle title="Reporte de cumplimiento" pain="“Tener evidencia de cumplimiento” y “justificar inversiones”: un informe listo para el Intendente y el área legal." />
+        <PageTitle title="Reporte de cumplimiento" />
         <button onClick={() => window.print()} className="flex items-center gap-2 rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white"><Printer size={16} /> Imprimir / PDF</button>
       </div>
       <Card>

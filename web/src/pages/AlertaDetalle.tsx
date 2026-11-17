@@ -19,7 +19,7 @@ export function AlertaDetalle() {
 
   return (
     <div>
-      <PageTitle title="Detalle del incidente" pain="“Si ocurre un incidente, probablemente me llamen a mí”: la respuesta guiada reparte la carga con el SOC." />
+      <PageTitle title="Detalle del incidente" />
       <Card className="mb-4 border-red-300 bg-red-50">
         <div className="flex flex-wrap items-center gap-2"><Badge tone="red">Crítica</Badge><span className="font-bold text-red-900">{ALERTA_CRITICA.titulo}</span></div>
         <div className="mt-1 text-sm text-red-800">{ALERTA_CRITICA.municipio} · {ALERTA_CRITICA.hora} · origen {ALERTA_CRITICA.origen} · {ALERTA_CRITICA.usuario}</div>
