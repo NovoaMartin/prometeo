@@ -1,0 +1,13 @@
+{
+  "name": "red-prometeo",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix web && npm install --prefix server",
+    "dev": "concurrently -k -n web,api -c cyan,magenta \"npm run dev --prefix web\" \"npm run dev --prefix server\"",
+    "build": "npm run build --prefix web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

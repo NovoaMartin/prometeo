@@ -1,0 +1,8 @@
+node_modules
+*.db
+*.db-*
+.env
+dist
+*.tsbuildinfo
+.wrangler
+.dev.vars
