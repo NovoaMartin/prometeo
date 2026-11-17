@@ -1,4 +1,5 @@
-import type { Rol } from './municipio'
+export type Perfil = 'referente' | 'intendente' | 'analista' | 'ong'
+type Rol = Perfil
 
 type Intent = 'explicar_alerta' | 'primeros_pasos' | 'notificar' | 'que_es_mfa' | 'mi_puntaje' | 'cuanto_cuesta' | 'default'
 
@@ -16,9 +17,9 @@ const T: Record<Intent, Record<Rol, string>> = {
     ong: 'Pedí ayuda a tu Guardián Digital, cambiá la clave y activá la verificación en dos pasos.',
   },
   notificar: {
-    referente: 'Eso lo define el área legal, pero en este caso los registros muestran que el archivo sensible ya no estaba en la carpeta accedida. Reuní los registros y consultalo; el reporte de cumplimiento te sirve como evidencia.',
-    intendente: 'Si no hay acceso a datos personales, normalmente no corresponde notificar a las personas, pero debe documentarse. El reporte de cumplimiento reúne la evidencia para su área legal.',
-    analista: 'Alcance: acceso a la carpeta anterior; el Excel con datos de salud no estaba ahí. Sin exfiltración confirmada. Documentá la línea de tiempo y pasalo al área legal del municipio.',
+    referente: 'Eso lo define el área legal. Reuní los registros del incidente (línea de tiempo y checklist) y consultalo; el reporte de cumplimiento te sirve como evidencia.',
+    intendente: 'Si hubo acceso a datos personales puede corresponder notificar; si no, debe documentarse igual. El reporte de cumplimiento reúne la evidencia para su área legal.',
+    analista: 'Determiná el alcance con los logs (qué se accedió y si hubo exfiltración), documentá la línea de tiempo y pasalo al área legal del municipio.',
     ong: 'Consultá con tu referente. Guardá las capturas de lo ocurrido.',
   },
   que_es_mfa: {
@@ -47,6 +48,8 @@ const T: Record<Intent, Record<Rol, string>> = {
   },
 }
 
+export interface CtxAlerta { simple: string; tecnica: string; pasosPendientes: string[] }
+
 export function detectarIntencion(texto: string): Intent {
   const t = texto.toLowerCase()
   if (/explic|alerta|grave|pasó|paso/.test(t)) return 'explicar_alerta'
@@ -58,7 +61,15 @@ export function detectarIntencion(texto: string): Intent {
   return 'default'
 }
 
-export const responderGuion = (texto: string, rol: Rol) => T[detectarIntencion(texto)][rol]
+// Con la alerta real en pantalla, explicación y pasos salen de sus datos
+export function responderGuion(texto: string, rol: Rol, alerta?: CtxAlerta) {
+  const i = detectarIntencion(texto)
+  if (alerta && i === 'explicar_alerta') return rol === 'analista' ? alerta.tecnica : alerta.simple
+  if (alerta && i === 'primeros_pasos') {
+    return alerta.pasosPendientes.length ? 'Pasos pendientes de la checklist:\n' + alerta.pasosPendientes.map((p, n) => `${n + 1}) ${p}`).join('\n') : 'La checklist está completa. Registrá el cierre y revisá el reporte.'
+  }
+  return T[i][rol]
+}
 
 export const CHIPS: Record<string, string[]> = {
   alerta: ['Explicame esta alerta', '¿Qué hago primero?', '¿Tengo que notificar?'],
