@@ -29,7 +29,7 @@ export function Landing() {
       <section className="bg-ink text-white">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
           <p className="text-sm font-semibold uppercase tracking-widest text-teal-300">Red de Ciberseguridad Comunitaria</p>
-          <h1 className="mt-3 max-w-3xl text-3xl font-bold md:text-5xl">Tu municipio protegido las 24 horas, sin armar un sistema de seguridad propio.</h1>
+          <h1 className="mt-3 max-w-3xl text-3xl font-bold md:text-5xl">Los ataques no descansan, nosotros tampoco.</h1>
           <p className="mt-4 max-w-2xl text-slate-300">Una red que une universidades y municipios para vigilar, alertar y responder por vos, a un costo compartido.</p>
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <Link to="/autodiagnostico" className="inline-flex items-center gap-2 rounded-lg bg-teal-400 px-5 py-3 font-semibold text-ink hover:bg-teal-300">Hacer autodiagnóstico gratis <ArrowRight size={18} /></Link>
