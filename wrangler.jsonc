@@ -25,7 +25,7 @@
 		}
 	],
 	"vars": {
-		"DEEPSEEK_MODEL": "deepseek-chat"
+		"DEEPSEEK_MODEL": "deepseek-flash"
 	}
 	// Secreto (no va aca): npx wrangler secret put DEEPSEEK_API_KEY
 }
